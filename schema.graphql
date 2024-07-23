@@ -5,3 +5,28 @@ type TableName @table @export {
     name: String # we can define any other attributes here
     tag: String @indexed # we can specify any attributes that should be indexed
 }
+
+type User @table  {
+
+    id: ID @primaryKey
+    firstName: String
+    lastname: String
+    # should rename to bookedMarkedArticles
+    newsArticleBookMarks: [BookMarkedArticles]  @relationship(from: BookMarkedArticlesId) 
+    preferedNewsSources: [String] 
+    timeStamp: String @createdTime
+ 
+
+
+}
+
+type BookMarkedArticles @table @export {
+    id: ID @primaryKey
+    authorName: String
+    articleTitle: String
+    articleDescription: String
+    articleSource: String
+    articleURL: String
+    timeStamp: String @createdTime
+
+}
