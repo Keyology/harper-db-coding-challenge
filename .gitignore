@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/dotenv,node
-# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,node
+# Created by https://www.toptal.com/developers/gitignore/api/dotenv,venv,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,venv,node
 
 ### dotenv ###
 .env
@@ -143,17 +143,18 @@ dist
 # SvelteKit build / generate output
 .svelte-kit
 
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
 
-# mode modules
-
-.node_modules/
-
-node_modules
-
-./node_modules
-
-# env file
-
-.env
-
-# End of https://www.toptal.com/developers/gitignore/api/dotenv,node
+# End of https://www.toptal.com/developers/gitignore/api/dotenv,venv,node
