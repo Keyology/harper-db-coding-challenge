@@ -1,32 +1,56 @@
 ## Here we can define any tables in our database. This example shows how we define a type as a table using
 ## the type name as the table name and specifying it is an "export" available in the REST and other external protocols.
-type TableName @table @export {
-    id: ID @primaryKey # Here we define primary key (must be one)
-    name: String # we can define any other attributes here
-    tag: String @indexed # we can specify any attributes that should be indexed
-}
+# type TableName @table @export {
+#     id: ID @primaryKey # Here we define primary key (must be one)
+#     name: String # we can define any other attributes here
+#     tag: String @indexed # we can specify any attributes that should be indexed
+# }
 
-type User @table  {
+type User @table @export {
 
+    # Unique identifier for the user
     id: ID @primaryKey
+    
+    # User's first name
     firstName: String
+    
+    # User's last name
     lastname: String
-    # should rename to bookedMarkedArticles
-    newsArticleBookMarks: [BookMarkedArticles]  @relationship(from: BookMarkedArticlesId) 
-    preferedNewsSources: [String] 
+    
+    # List of bookmarked news articles by the user
+    
+    # Note: Should rename to bookMarkedArticles for clarity
+    newsArticleBookMarks: [BookMarkedArticles] @relationship(from: BookMarkedArticlesId)
+    
+    # List of preferred news sources for the user
+    preferedNewsSources: [String]
+    
+    # Timestamp indicating when the user was created
     timeStamp: String @createdTime
- 
-
-
 }
+
 
 type BookMarkedArticles @table @export {
+    
+    # Unique identifier for the bookmarked article
     id: ID @primaryKey
+    
+    # Name of the article's author
     authorName: String
+    
+    # Title of the article
     articleTitle: String
+    
+    # Description of the article
     articleDescription: String
+    
+    # Source of the article (e.g., website or publication name)
     articleSource: String
+    
+    # URL link to the article
     articleURL: String
+    
+    # Timestamp indicating when the article was bookmarked
     timeStamp: String @createdTime
 
 }
